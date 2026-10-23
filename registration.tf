@@ -23,7 +23,7 @@ resource "kubernetes_secret" "registration" {
       }
     })
     token = kubernetes_secret.argocd-manager.data["token"]
-    ca    = var.ca
+    ca    = base64decode(var.ca)
   }
 
   provider = kubernetes.source
