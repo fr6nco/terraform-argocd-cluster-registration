@@ -22,6 +22,8 @@ resource "kubernetes_secret" "registration" {
         caData = var.ca
       }
     })
+    token = kubernetes_secret.argocd-manager.data["token"]
+    ca    = var.ca
   }
 
   provider = kubernetes.source
